@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- Built on Frappe. https://frappeframework.com/ -->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="frappe">
+
+	{% block meta_block %}
+		{% include "templates/includes/meta_block.html" %}
+	{% endblock %}
+
+	<title>{% block title %}{{ title | striptags }}{% endblock %} - Upmega Furniture</title>
+
+	{% block favicon %}
+	<link
+		rel="shortcut icon"
+		href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+		type="image/x-icon"
+	>
+	{% endblock %}
+
+	<link rel="canonical" href="{{ canonical }}">
+
+	{%- block head -%}
+		{% include "templates/includes/head.html" %}
+	{%- endblock -%}
+
+	{%- block head_include %}
+		{{ head_include or "" }}
+	{% endblock -%}
+
+	{%- block style %}
+		{% if colocated_css -%}
+			<style>{{ colocated_css }}</style>
+		{%- endif %}
+	{%- endblock -%}
+
+	    <!--Google font-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&display=swap"
+			rel="stylesheet">
+	
+		<!-- Icons -->
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/vendors/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/vendors/remixicon.css">
+	
+		<!-- Slick slider css -->
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/vendors/slick.css">
+	
+		<!-- Animate icon -->
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/vendors/animate.css">
+	
+		<!-- Themify icon -->
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/vendors/themify-icons.css">
+	
+		<!-- Bootstrap css -->
+	
+		<!-- Theme css -->
+		<link rel="stylesheet" type="text/css" href="assets/paf/css/style.css">
+
+<!-- JavaScripts -->
+<script src="assets/paf/js/modernizr.js"></script>
+
+	<script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 'null') }};
+		window.show_language_picker = {{ show_language_picker or 'false' }};
+	</script>
+</head>
+<body class="theme-color-27" frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}">
+	
+	
+	{% include "public/icons/timeless/icons.svg" %}
+	{%- block banner -%}
+		{% include "templates/includes/banner_extension.html" ignore missing %}
+
+		{% if banner_html -%}
+		{{ banner_html or "" }}
+		{%- endif %}
+	{%- endblock -%}
+
+    {%- block navbar -%}
+        {% include "templates/includes/navbar.html" %}
+    {%- endblock -%}
+
+	{% block content %}
+		{{ content }}
+	{% endblock %}
+
+	{%- block footer -%}
+		
+		{% include "templates/includes/footer.html" %}
+	{%- endblock -%}
+
+	{% block base_scripts %}
+	<!-- js should be loaded in body! -->
+	<script>
+		frappe.boot = {{ boot }}
+		// for backward compatibility of some libs
+		frappe.sys_defaults = frappe.boot.sysdefaults;
+	</script>
+	{{ include_script('frappe-web.bundle.js') }}
+	{% endblock %}
+
+	{%- for link in web_include_js %}
+	{{ include_script(link) }}
+	{%- endfor -%}
+
+
+
+    <!-- tap to top -->
+    <div class="tap-top top-cls">
+        <div>
+            <i class="ri-arrow-up-double-line"></i>
+        </div>
+    </div>
+    <!-- tap to top end -->
+
+
+
+    <!-- slick js-->
+    <script src="assets/paf/js/slick.js"></script>
+    <script src="assets/paf/js/slick-animation.min.js"></script>
+
+    <!-- menu js-->
+    <script src="assets/paf/js/menu.js"></script>
+    <script src="assets/paf/js/sticky-menu.js"></script>
+
+    <!-- ajax search js -->
+    <script src="assets/paf/js/typeahead.bundle.min.js"></script>
+    <script src="assets/paf/js/typeahead.jquery.min.js"></script>
+    <script src="assets/paf/js/ajax-custom.js"></script>
+
+    <!-- lazyload js-->
+    <script src="assets/paf/js/lazysizes.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="assets/paf/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="assets/paf/js/bootstrap-notify.min.js"></script>
+
+    <!-- Theme js-->
+    <script src="assets/paf/js/theme-setting.js"></script>
+    <script src="assets/paf/js/script.js"></script>
+    <script src="assets/paf/js/custom-slick-animated.js"></script>
+
+
+    <script>
+        $(window).on('load', function () {
+            setTimeout(function () {
+                $('#exampleModal').modal('show');
+            }, 2500);
+        });
+
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+    </script>
+
+
+ <!-- Any Script files include here -->
+
+	{%- block script %}
+		{% if colocated_js -%}
+			<script>{{ colocated_js }}</script>
+		{%- endif %}
+	{%- endblock %}
+	<!-- csrf_token -->
+	{%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</body>
+</html>

@@ -5,6 +5,12 @@ app_description = "Manage Rentals in frappe"
 app_email = "faithvictoria461@gmail.com"
 app_license = "mit"
 
+
+
+website_route_rules = [
+    {"from_route": "/rentals", "to_route": "rentals/home"}
+]
+
 # Apps
 # ------------------
 
