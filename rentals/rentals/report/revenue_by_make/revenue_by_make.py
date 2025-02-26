@@ -16,6 +16,7 @@ def execute(filters=None):
 		
 	},]
 	
+	
 	data = frappe.get_all("Ride Booking",
 	fields =["SUM(total_amount) AS total_revenue", "vehicle.make"],
 	filters ={"docstatus":1}, group_by="make"
